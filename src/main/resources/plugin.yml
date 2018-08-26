@@ -1,0 +1,35 @@
+name: ${project.name}
+version: ${project.version}
+description: ${project.description}
+author: ${author}
+main: ${project.groupId}.${project.artifactId}.${project.name}
+api-version: 1.13
+
+commands:
+  invportal:
+    description: InvPortal command
+    usage: /<command>
+  warp:
+    description: Warp command
+    usage: /<command>
+
+permissions:
+  inventoryportal.random.cool-down:
+    description: Bypass the cooldown for the random warp
+    default: op
+  inventoryportal.user:
+    description: Basic permission to access warps
+    default: true
+    children:
+      inventoryportal.help: true
+      inventoryportal.random: true
+      inventoryportal.use: true
+  inventoryportal.admin:
+    description: Allow access to admin commands
+    default: op
+    children:
+      inventoryportal.create: true
+      inventoryportal.delete: true
+      inventoryportal.edit: true
+      inventoryportal.import: true
+      inventoryportal.reload: true

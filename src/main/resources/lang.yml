@@ -1,0 +1,57 @@
+prefix: '&3[&bWarp&3] &7'
+error:
+  arguments: '&cIncorrect number of arguments supplied'
+  no-command: '&cCommand not found'
+  no-console: '&cThis command cannot be run from console'
+  no-permission: '&cYou do not have permission to do this'
+  warp-not-found: '&cThe warp &4%s&c does not exist...'
+  warp-not-loaded: '&cThis warp does not have a valid location, please tell an admin'
+command:
+  create:
+    description: 'Create a new warp'
+    usage: 'create <name>'
+    already-exists: '&cThis warp already exists'
+    warp-created: 'Warp created'
+  delete:
+    description: 'Delete an existing warp'
+    usage: 'delete <name>'
+    warp-deleted: 'Warp deleted'
+  edit:
+    description: 'Edit a warp'
+    usage: 'edit <name>'
+    cancel: '&8Type &e%s &8to cancel...'
+    edit-description: 'Type the new Description into chat:'
+    edit-display-name: 'Type the new Display Name into chat:'
+    location: 'Warp location updated to your current position'
+  goto:
+    description: 'Teleport to a warp'
+    usage: 'goto <name>'
+    warping: 'Warping to %s...'
+  help:
+    description: 'InventoryPortal help'
+    usage: 'help'
+    header: '&7&m-------------&6 InventoryPortal &7&m------------'
+    about: 'Custom GUI teleports!'
+    format: '&6/invportal %s &f- &7%s'
+    footer: '&7&m-----------------------------------------'
+  import:
+    description: 'Import warps from Essentials'
+    usage: 'import'
+    import-warp: 'Added warp %s'
+    import-count: 'Successfully imported %d warps'
+  menu:
+    description: 'Open the warps GUI'
+    usage: 'menu'
+  random:
+    description: 'Warp to a random location'
+    usage: 'random'
+    cool-down: 'You must wait %s seconds before you can use this action'
+    warping: 'Teleporting you to a random location!'
+    world-not-enabled: 'Random warps are not enabled in this world'
+  reload:
+    description: 'Reload all the yml files'
+    usage: 'reload'
+    reloaded: 'Successfully reloaded the config files'
+menu:
+  edit: '&5&lEditing: &8&o%s'
+  warp: '&5&lMCAU Warps'

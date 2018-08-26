@@ -1,0 +1,117 @@
+aliases:
+  create:
+  - 'set'
+  delete:
+  - 'remove'
+  goto:
+  - 'warp'
+buttons:
+  edit:
+    display-name:
+      item: PAPER
+      name: '&6&lDisplay Name'
+      lore:
+      - '&7Click to edit'
+      - '&e%s'
+    description:
+      item: OAK_SIGN
+      name: '&6&lDescription'
+      lore:
+      - '&7Click to edit'
+      description: '&e%s'
+    category:
+      item: SLIME_BALL
+      name: '&6&lCategory'
+      lore:
+      - '&8··· (R-Click)'
+      - '&7%1$s'
+      - '&e%2$s'
+      - '&7%3$s'
+      - '&8··· (L-Click)'
+    item:
+      item: SLIME_BALL
+      name: '&6&lIcon'
+      lore:
+      - '&7L-Click to set item. R-Click to remove'
+      - '&e%s'
+    location:
+      item: ENDER_PEARL
+      name: '&6&lLocation'
+      lore:
+      - '&eUpdate the location to your current position'
+    warp-menu:
+      item: BARRIER
+      name: '&4&lBack'
+      lore: []
+  warp:
+    info:
+      item: SIGN
+      name: '&e- &6&lHow to use&e -'
+      lore:
+      - '&e• Left-click any warp below to teleport to it'
+      - '&e• Click Sort to change the ordering'
+      - '&e• Staff may right-click any warp to edit it'
+    next:
+      item: REDSTONE_TORCH
+      name: '&6&lNext Page&e >>>'
+      lore: []
+    page:
+      item: PAPER
+      name: '&6&lPage&e %d/%d'
+      lore: []
+    previous:
+      item: REDSTONE_TORCH
+      name: '&e<<< &6&lPrevious Page'
+      lore: []
+    random:
+      item: END_CRYSTAL
+      name: '&e- &6&lRandom&e -'
+      lore:
+      - '&eWarp to a &6random location'
+    sort:
+      item: HOPPER
+      name: '&e- &6&lSort&e -'
+      lore:
+      - '&8··· (R-Click)'
+      - '&7%1$s'
+      - '&e%2$s'
+      - '&7%3$s'
+      - '&8··· (L-Click)'
+category:
+  ## default category is required
+  default:
+    display-name: 'Default'
+    item: SLIME_BALL
+    name: '&6%s &7(&o%s&7)'
+    lore:
+    - '&eCategory: &6%s'
+    description: '&7%s'
+command:
+  edit:
+    cancel: 'cancel'
+  random:
+    avoid-regions: true
+    avoid-blocks:
+    - 'WATER'
+    - 'LAVA'
+    - 'KELP'
+    - 'KELP_PLANT'
+    - 'SEAGRASS'
+    - 'TALL_SEAGRASS'
+    enabled-worlds:
+    - 'world'
+    ## The cool-down in seconds between running this command (Bypass with inventoryportal.random.cool-down)
+    cool-down: 30
+    ## How long to apply the resistance potion effect (0 to disable)
+    resistance-duration: 2
+    use-essentials-back: true
+  warp:
+    use-essentials-back: true
+
+## Leave blank to disable a particular sound
+sound:
+  click: 'UI_BUTTON_CLICK'
+  edit-cancel: 'BLOCK_NOTE_BLOCK_BASS'
+  edit-success: 'BLOCK_NOTE_BLOCK_HARP'
+  warp: 'ENTITY_ENDERMAN_TELEPORT'
+  random: 'ENTITY_ENDERMAN_TELEPORT'

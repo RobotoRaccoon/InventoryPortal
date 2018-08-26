@@ -1,0 +1,10 @@
+# Builds
+/out
+/target
+
+# Vim
+.*.sw[a-p]
+
+# IntelliJ
+.idea/
+*.iml
