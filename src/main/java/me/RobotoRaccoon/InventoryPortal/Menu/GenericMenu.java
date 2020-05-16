@@ -25,8 +25,9 @@ public abstract class GenericMenu extends BasicMenu {
     protected abstract void generateButtons();
 
     public Button[] getButtons() {
-        if (buttons == null)
+        if (buttons == null) {
             generateButtons();
+        }
         return buttons;
     }
 
@@ -38,8 +39,4 @@ public abstract class GenericMenu extends BasicMenu {
         buttons = menu.getButtons();
         InventoryPortal.getHandler().refreshMenu(player);
     }
-
-    //public void refresh() {
-    //    InventoryPortal.getHandler().refreshMenu(player);
-    //}
 }

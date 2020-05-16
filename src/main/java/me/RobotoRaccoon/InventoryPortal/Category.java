@@ -1,9 +1,7 @@
 package me.RobotoRaccoon.InventoryPortal;
 
 import me.RobotoRaccoon.InventoryPortal.Menu.Buttons.ButtonIcon;
-import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +28,11 @@ public class Category {
         descriptionFormat = config.getString("description", defaultConfig.getString("description"));
         nameFormat = config.getString("name", defaultConfig.getString("name"));
 
-        if (config.contains("lore"))
+        if (config.contains("lore")) {
             loreFormat = config.getStringList("lore");
-        else
+        } else {
             loreFormat = defaultConfig.getStringList("lore");
+        }
     }
 
     public String getName() {

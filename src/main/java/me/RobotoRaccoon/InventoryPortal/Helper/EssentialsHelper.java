@@ -19,20 +19,23 @@ public class EssentialsHelper {
 
     private static Essentials getEssentials() {
         Plugin ess = InventoryPortal.getPlugin().getServer().getPluginManager().getPlugin("Essentials");
-        if ((ess == null) || (!(ess instanceof Essentials)))
+        if (ess instanceof Essentials) {
+            return (Essentials) ess;
+        } else {
             return null;
-
-        return (Essentials) ess;
+        }
     }
 
     public void updateBackLocation(Player player) {
-        if (ess != null)
+        if (ess != null) {
             ess.getUser(player).setLastLocation();
+        }
     }
 
     public Integer importWarps(CommandSender sender) {
-        if (ess == null)
+        if (ess == null) {
             return null;
+        }
 
         Integer added = 0;
         for (String name : ess.getWarps().getList()) {

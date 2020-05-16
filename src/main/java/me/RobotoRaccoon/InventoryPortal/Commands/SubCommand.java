@@ -91,9 +91,10 @@ public abstract class SubCommand {
 
     public List<String> getAliases() {
         ConfigurationSection config = InventoryPortal.getConfiguration().getConfig().getConfigurationSection("aliases");
-        if (config != null && config.isList(getName()))
+        if (config != null && config.isList(getName())) {
             return config.getStringList(getName());
-        else
+        } else {
             return new ArrayList<>();
+        }
     }
 }

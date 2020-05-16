@@ -23,7 +23,7 @@ public class DisplayNameButton extends ClickableButton {
 
     public void click(Player player, ClickType clickType) {
         EditOption settings = new EditOption(warp, Setting.DISPLAYNAME);
-        PlayerChatListener.editMap.put(player, settings);
+        PlayerChatListener.EDIT_MAP.put(player, settings);
         String cancel = InventoryPortal.getConfiguration().getConfig().getString("command.edit.cancel");
 
         new LangString("command.edit.edit-display-name").send(player);

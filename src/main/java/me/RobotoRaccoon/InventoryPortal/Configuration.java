@@ -96,5 +96,4 @@ public class Configuration {
     public FileConfiguration getCount() {
         return count;
     }
-
 }

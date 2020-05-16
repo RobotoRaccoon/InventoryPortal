@@ -10,6 +10,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class InventoryPortal extends JavaPlugin {
 
@@ -69,7 +70,7 @@ public class InventoryPortal extends JavaPlugin {
         return handler;
     }
 
-    public static HashMap<String, Category> getCategories() {
+    public static Map<String, Category> getCategories() {
         return categories;
     }
 }

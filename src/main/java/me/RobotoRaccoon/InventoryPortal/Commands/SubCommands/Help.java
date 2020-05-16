@@ -27,11 +27,13 @@ public class Help extends SubCommand {
             SubCommand cmd = entry.getValue();
 
             // Ignore help command and aliases of any command
-            if (cmd == this || !name.equalsIgnoreCase(cmd.getName()))
+            if (cmd == this || !name.equalsIgnoreCase(cmd.getName())) {
                 continue;
+            }
 
-            if (sender.hasPermission(cmd.getPermission()))
+            if (sender.hasPermission(cmd.getPermission())) {
                 new LangString("command.help.format", cmd.getUsage(), cmd.getDescription()).send(sender);
+            }
         }
 
         new LangString("command.help.footer").send(sender);

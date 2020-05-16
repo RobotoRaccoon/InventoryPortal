@@ -7,12 +7,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class CoreCommand implements CommandExecutor {
 
-    public static final HashMap<String, SubCommand> subCommands = new LinkedHashMap<>();
+    public static final Map<String, SubCommand> subCommands = new LinkedHashMap<>();
 
     public static void addAllCommands() {
         subCommands.clear();
@@ -29,8 +29,9 @@ public class CoreCommand implements CommandExecutor {
 
     private static void addCommand(SubCommand cmd) {
         subCommands.put(cmd.getName(), cmd);
-        for(String alias : cmd.getAliases())
-            subCommands.put(alias, cmd);
+        for (String alias : cmd.getAliases()) {
+            subCommands.putIfAbsent(alias, cmd);
+        }
     }
 
     public boolean onCommand(final CommandSender sender, Command cmd, String label, String[] args) {

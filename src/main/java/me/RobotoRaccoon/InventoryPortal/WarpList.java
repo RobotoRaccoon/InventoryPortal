@@ -58,18 +58,15 @@ public class WarpList {
     }
 
     public static void sort(List<Warp> warpList, final SortType type) {
-        Collections.sort(warpList, new Comparator<Warp>() {
-            @Override
-            public int compare(Warp o1, Warp o2) {
-                switch (type) {
-                    case NAME:
-                    default:
-                        return o1.getName().compareTo(o2.getName());
-                    case CATEGORY:
-                        return o1.getCategory().getName().compareTo(o2.getCategory().getName());
-                    case POPULARITY:
-                        return o2.getCount() - o1.getCount();
-                }
+        warpList.sort((o1, o2) -> {
+            switch (type) {
+            case CATEGORY:
+                return o1.getCategory().getName().compareTo(o2.getCategory().getName());
+            case POPULARITY:
+                return o2.getCount() - o1.getCount();
+            case NAME:
+            default:
+                return o1.getName().compareTo(o2.getName());
             }
         });
     }

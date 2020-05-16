@@ -4,12 +4,10 @@ import me.RobotoRaccoon.InventoryPortal.Helper.EssentialsHelper;
 import me.RobotoRaccoon.InventoryPortal.Helper.SoundHelper;
 import me.RobotoRaccoon.InventoryPortal.Menu.Buttons.ButtonIcon;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,10 +47,11 @@ public class Warp {
         setName(name);
         setDisplayName(config.getString("display-name"));
 
-        if (config.isList("description"))
+        if (config.isList("description")) {
             setDescription(config.getStringList("description"));
-        else
+        } else {
             addDescription(config.getString("description"));
+        }
 
         setCategory(InventoryPortal.getCategories().get(config.getString("category")));
         try {
@@ -61,11 +60,11 @@ public class Warp {
         } catch (IllegalArgumentException e) {}
 
         World world = InventoryPortal.getPlugin().getServer().getWorld(config.getString("world"));
-        Double x = config.getDouble("x");
-        Double y = config.getDouble("y");
-        Double z = config.getDouble("z");
-        Float yaw = (float) config.getDouble("yaw");
-        Float pitch = (float) config.getDouble("pitch");
+        double x = config.getDouble("x");
+        double y = config.getDouble("y");
+        double z = config.getDouble("z");
+        float yaw = (float) config.getDouble("yaw");
+        float pitch = (float) config.getDouble("pitch");
         setLocation(new Location(world, x, y, z, yaw, pitch));
 
         setCount(InventoryPortal.getConfiguration().getCount().getInt(getName()));
@@ -78,8 +77,9 @@ public class Warp {
         }
 
         ConfigurationSection config = InventoryPortal.getConfiguration().getConfig().getConfigurationSection("command.warp");
-        if (config.getBoolean("use-essentials-back"))
+        if (config.getBoolean("use-essentials-back")) {
             new EssentialsHelper().updateBackLocation(player);
+        }
 
         player.teleport(getLocation(), PlayerTeleportEvent.TeleportCause.PLUGIN);
         new LangString("command.goto.warping", getDisplayName()).send(player);
@@ -168,10 +168,7 @@ public class Warp {
     }
 
     public void setItem(ButtonIcon item) {
-        if (item == null || item.getType() == Material.AIR)
-            this.item = null;
-        else
-            this.item = item;
+        this.item = (item == null || item.getType().isAir()) ? null : item;
     }
 
     public Location getLocation() {

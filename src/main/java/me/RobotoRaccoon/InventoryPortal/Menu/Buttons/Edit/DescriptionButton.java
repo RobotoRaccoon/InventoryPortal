@@ -28,7 +28,7 @@ public class DescriptionButton extends ClickableButton {
 
     public void click(Player player, ClickType clickType) {
         EditOption settings = new EditOption(warp, Setting.DESCRIPTION);
-        PlayerChatListener.editMap.put(player, settings);
+        PlayerChatListener.EDIT_MAP.put(player, settings);
         String cancel = InventoryPortal.getConfiguration().getConfig().getString("command.edit.cancel");
 
         new LangString("command.edit.edit-description").send(player);

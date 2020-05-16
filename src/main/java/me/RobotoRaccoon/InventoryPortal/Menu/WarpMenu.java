@@ -19,7 +19,7 @@ import org.bukkit.event.inventory.ClickType;
 
 public class WarpMenu extends GenericMenu {
 
-    private static final int PERPAGE = 45;
+    private static final int PER_PAGE = 45;
 
     private WarpMenu menu;
     private WarpSettings settings;
@@ -35,37 +35,41 @@ public class WarpMenu extends GenericMenu {
     }
 
     protected void generateButtons() {
-        buttons = new Button[PERPAGE + 9];
+        buttons = new Button[PER_PAGE + 9];
         int page = settings.getPage();
 
         List<Warp> warps = settings.getList();
-        int maxPage = Math.max(0, (warps.size() - 1) / PERPAGE) + 1;
+        int maxPage = Math.max(0, (warps.size() - 1) / PER_PAGE) + 1;
 
         buttons[0] = new SortButton(menu, settings).getButton();
         buttons[1] = new PresetButton("warp.info").getButton();
 
-        if (page > 1)
+        if (page > 1) {
             buttons[3] = previousButton(menu, settings);
+        }
 
         if (maxPage > 1) {
             buttons[4] = new PresetButton("warp.page").formatName(page, maxPage).getButton();
-            if (page <= 64)
+            if (page <= 64) {
                 buttons[4].setAmount(page);
+            }
         }
 
-        if (page < maxPage)
+        if (page < maxPage) {
             buttons[5] = nextButton(menu, settings);
+        }
 
-        if (getPlayer().hasPermission(CoreCommand.subCommands.get("random").getPermission()))
+        if (getPlayer().hasPermission(CoreCommand.subCommands.get("random").getPermission())) {
             buttons[8] = randomButton();
+        }
 
         addWarpButtons(warps, page);
     }
 
     private void addWarpButtons(List<Warp> warps, final int page) {
         Warp[] warpArray = warps.toArray(new Warp[0]);
-        for (int i = 0; i < PERPAGE; i++) {
-            int index = (page - 1) * PERPAGE + i;
+        for (int i = 0; i < PER_PAGE; i++) {
+            int index = (page - 1) * PER_PAGE + i;
             if (index >= warps.size())
                 break;
 

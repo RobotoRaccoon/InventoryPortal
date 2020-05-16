@@ -24,8 +24,9 @@ public class WorldGuardHelper {
     }
 
     public static boolean canBuild(Player player, Location location) {
-        if (wg == null)
+        if (wg == null) {
             return true;
+        }
 
         RegionQuery query = WorldGuard.getInstance().getPlatform().getRegionContainer().createQuery();
         return query.testBuild(BukkitAdapter.adapt(location), wg.wrapPlayer(player), Flags.BUILD);

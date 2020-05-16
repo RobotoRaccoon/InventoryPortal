@@ -3,6 +3,7 @@ package me.RobotoRaccoon.InventoryPortal.Events;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import me.RobotoRaccoon.InventoryPortal.Helper.SoundHelper;
 import me.RobotoRaccoon.InventoryPortal.InventoryPortal;
@@ -18,7 +19,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 public class PlayerChatListener implements Listener {
 
-    public static HashMap<Player, EditOption> editMap = new HashMap<>();
+    public static final Map<Player, EditOption> EDIT_MAP = new HashMap<>();
 
     private static final String CANCEL = "cancel";
     private static final int SPLIT_COLUMN = 45;
@@ -26,40 +27,41 @@ public class PlayerChatListener implements Listener {
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
-        if (!editMap.containsKey(player))
+        if (!EDIT_MAP.containsKey(player)) {
             return;
+        }
 
         event.setCancelled(true);
-        EditOption s = editMap.get(player);
-        editMap.remove(player);
+        EditOption option = EDIT_MAP.get(player);
+        EDIT_MAP.remove(player);
 
         String message = event.getMessage();
         String cancel = InventoryPortal.getConfiguration().getConfig().getString("command.edit.cancel");
         // If message is CANCEL or the one defined in the config, do not edit.
         if (message.equalsIgnoreCase(CANCEL) || message.equalsIgnoreCase(cancel)) {
             new SoundHelper("edit-cancel").play(player);
-            openMenu(player, s.getWarp());
+            openMenu(player, option.getWarp());
             return;
         }
 
         // Update appropriate setting
-        switch (s.getSetting()) {
-            case DISPLAYNAME:
-                s.getWarp().setDisplayName(message);
-                break;
-            case DESCRIPTION:
-                s.getWarp().setDescription(warpString(message));
-                break;
+        switch (option.getSetting()) {
+        case DISPLAYNAME:
+            option.getWarp().setDisplayName(message);
+            break;
+        case DESCRIPTION:
+            option.getWarp().setDescription(warpString(message));
+            break;
         }
 
         new SoundHelper("edit-success").play(player);
-        openMenu(player, s.getWarp());
+        openMenu(player, option.getWarp());
     }
 
     private void openMenu(Player player, Warp warp) {
-        Bukkit.getScheduler().runTask(InventoryPortal.getPlugin(), () -> {
-            InventoryPortal.getHandler().openMenu(player, new EditMenu(player, warp));
-        });
+        Bukkit.getScheduler().runTask(InventoryPortal.getPlugin(), () ->
+            InventoryPortal.getHandler().openMenu(player, new EditMenu(player, warp))
+        );
     }
 
     private List<String> warpString(String message) {
