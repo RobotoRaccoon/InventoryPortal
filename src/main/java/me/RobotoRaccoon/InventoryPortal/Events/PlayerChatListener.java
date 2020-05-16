@@ -1,10 +1,5 @@
 package me.RobotoRaccoon.InventoryPortal.Events;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import me.RobotoRaccoon.InventoryPortal.Helper.SoundHelper;
 import me.RobotoRaccoon.InventoryPortal.InventoryPortal;
 import me.RobotoRaccoon.InventoryPortal.Menu.EditMenu;
@@ -16,6 +11,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class PlayerChatListener implements Listener {
 
@@ -65,7 +65,7 @@ public class PlayerChatListener implements Listener {
     }
 
     private List<String> warpString(String message) {
-        message = WordUtils.wrap(message, SPLIT_COLUMN, null, true);
-        return Arrays.asList(message.split("\\n"));
+        String wrapped = WordUtils.wrap(message, SPLIT_COLUMN, null, true);
+        return Arrays.asList(wrapped.split("\\n"));
     }
 }

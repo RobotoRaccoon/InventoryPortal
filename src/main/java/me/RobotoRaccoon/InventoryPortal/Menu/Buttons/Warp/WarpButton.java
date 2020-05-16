@@ -1,7 +1,5 @@
 package me.RobotoRaccoon.InventoryPortal.Menu.Buttons.Warp;
 
-import java.util.List;
-
 import com.github.Fupery.InvMenu.API.Event.MenuCloseReason;
 import me.RobotoRaccoon.InventoryPortal.Commands.SubCommands.Edit;
 import me.RobotoRaccoon.InventoryPortal.InventoryPortal;
@@ -10,6 +8,8 @@ import me.RobotoRaccoon.InventoryPortal.Menu.EditMenu;
 import me.RobotoRaccoon.InventoryPortal.Warp;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
+
+import java.util.List;
 
 public class WarpButton extends ClickableButton {
 

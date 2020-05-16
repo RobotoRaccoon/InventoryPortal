@@ -42,6 +42,7 @@ public class InventoryPortal extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        // No action
     }
 
     public static void loadConfigData() {

@@ -20,10 +20,12 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Random extends SubCommand {
 
-    private static HashMap<Player, Long> lastUsed;
+    private static final java.util.Random RAND = new java.util.Random();
+    private Map<Player, Long> lastUsed;
 
     public Random() {
         setName("random");
@@ -44,9 +46,9 @@ public class Random extends SubCommand {
             return;
         }
 
-        // Deny if the player is in cooldown
+        // Deny if the player is in cool-down
         if (lastUsed.containsKey(player) && !player.hasPermission("inventoryportal.random.cool-down")) {
-            Long timeRemaining = lastUsed.get(player) + config.getInt("cool-down") - System.currentTimeMillis() / 1000;
+            long timeRemaining = lastUsed.get(player) + config.getInt("cool-down") - System.currentTimeMillis() / 1000;
             if (timeRemaining > 0) {
                 new LangString("command.random.cool-down", timeRemaining).send(player);
                 return;
@@ -63,8 +65,9 @@ public class Random extends SubCommand {
             Boolean canBuild = !getConfig().getBoolean("avoid-regions") || WorldGuardHelper.canBuild(player, loc);
             Boolean isSafe = !blacklist.contains(beneath.getType().toString());
 
-            if (canBuild && isSafe)
+            if (canBuild && isSafe) {
                 break;
+            }
 
             // Inappropriate location, so get a new location and try again
             loc = getRandomLocation(world);
@@ -89,10 +92,9 @@ public class Random extends SubCommand {
 
     private Location getRandomLocation(World world) {
         WorldBorder border = world.getWorldBorder();
-        java.util.Random rand = new java.util.Random();
 
-        int x = (int) ((rand.nextDouble() - 0.5) * border.getSize() + border.getCenter().getX());
-        int z = (int) ((rand.nextDouble() - 0.5) * border.getSize() + border.getCenter().getZ());
+        int x = (int) ((RAND.nextDouble() - 0.5) * border.getSize() + border.getCenter().getX());
+        int z = (int) ((RAND.nextDouble() - 0.5) * border.getSize() + border.getCenter().getZ());
         int y = world.getHighestBlockYAt(x, z);
         return new Location(world, x + 0.5, y, z + 0.5);
     }
@@ -103,8 +105,9 @@ public class Random extends SubCommand {
 
     private void applyDamageResistance(Player player) {
         int duration = getConfig().getInt("resistance-duration");
-        if (duration <= 0)
+        if (duration <= 0) {
             return;
+        }
 
         PotionEffect effect = new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, duration, 1, true, false);
         player.addPotionEffect(effect);

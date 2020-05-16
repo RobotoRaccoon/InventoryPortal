@@ -1,8 +1,5 @@
 package me.RobotoRaccoon.InventoryPortal.Menu.Buttons.Edit;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import me.RobotoRaccoon.InventoryPortal.Category;
 import me.RobotoRaccoon.InventoryPortal.InventoryPortal;
 import me.RobotoRaccoon.InventoryPortal.Menu.Buttons.UpdatableButton;
@@ -10,6 +7,9 @@ import me.RobotoRaccoon.InventoryPortal.Menu.EditMenu;
 import me.RobotoRaccoon.InventoryPortal.Warp;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class CategoryButton extends UpdatableButton {
 

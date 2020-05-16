@@ -1,14 +1,14 @@
 package me.RobotoRaccoon.InventoryPortal.Menu.Buttons;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import com.github.Fupery.InvMenu.API.Button.Button;
 import com.github.Fupery.InvMenu.API.Button.StaticButton;
 import me.RobotoRaccoon.InventoryPortal.InventoryPortal;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class PresetButton {
 

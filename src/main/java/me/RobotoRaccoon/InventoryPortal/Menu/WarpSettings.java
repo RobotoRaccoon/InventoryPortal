@@ -1,10 +1,10 @@
 package me.RobotoRaccoon.InventoryPortal.Menu;
 
-import java.util.List;
-
 import me.RobotoRaccoon.InventoryPortal.Warp;
 import me.RobotoRaccoon.InventoryPortal.WarpList;
 import me.RobotoRaccoon.InventoryPortal.WarpList.SortType;
+
+import java.util.List;
 
 public class WarpSettings {
 

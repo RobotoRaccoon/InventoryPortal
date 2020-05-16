@@ -3,7 +3,6 @@ package me.RobotoRaccoon.InventoryPortal.Commands.SubCommands;
 import me.RobotoRaccoon.InventoryPortal.Commands.CommandInfo;
 import me.RobotoRaccoon.InventoryPortal.Commands.CoreCommand;
 import me.RobotoRaccoon.InventoryPortal.Commands.SubCommand;
-import me.RobotoRaccoon.InventoryPortal.InventoryPortal;
 import me.RobotoRaccoon.InventoryPortal.LangString;
 import org.bukkit.command.CommandSender;
 
