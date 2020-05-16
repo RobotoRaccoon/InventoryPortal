@@ -96,7 +96,7 @@ public class Random extends SubCommand {
         int x = (int) ((RAND.nextDouble() - 0.5) * border.getSize() + border.getCenter().getX());
         int z = (int) ((RAND.nextDouble() - 0.5) * border.getSize() + border.getCenter().getZ());
         int y = world.getHighestBlockYAt(x, z);
-        return new Location(world, x + 0.5, y, z + 0.5);
+        return new Location(world, x + 0.5, y + 1, z + 0.5);
     }
 
     private boolean isWorldEnabled(World world) {
