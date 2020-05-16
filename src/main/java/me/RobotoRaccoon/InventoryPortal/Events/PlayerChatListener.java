@@ -8,7 +8,9 @@ import me.RobotoRaccoon.InventoryPortal.Helper.SoundHelper;
 import me.RobotoRaccoon.InventoryPortal.InventoryPortal;
 import me.RobotoRaccoon.InventoryPortal.Menu.EditMenu;
 import me.RobotoRaccoon.InventoryPortal.Menu.EditOption;
+import me.RobotoRaccoon.InventoryPortal.Warp;
 import org.apache.commons.lang.WordUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -36,7 +38,7 @@ public class PlayerChatListener implements Listener {
         // If message is CANCEL or the one defined in the config, do not edit.
         if (message.equalsIgnoreCase(CANCEL) || message.equalsIgnoreCase(cancel)) {
             new SoundHelper("edit-cancel").play(player);
-            InventoryPortal.getHandler().openMenu(player, new EditMenu(player, s.getWarp()));
+            openMenu(player, s.getWarp());
             return;
         }
 
@@ -51,7 +53,13 @@ public class PlayerChatListener implements Listener {
         }
 
         new SoundHelper("edit-success").play(player);
-        InventoryPortal.getHandler().openMenu(player, new EditMenu(player, s.getWarp()));
+        openMenu(player, s.getWarp());
+    }
+
+    private void openMenu(Player player, Warp warp) {
+        Bukkit.getScheduler().runTask(InventoryPortal.getPlugin(), () -> {
+            InventoryPortal.getHandler().openMenu(player, new EditMenu(player, warp));
+        });
     }
 
     private List<String> warpString(String message) {
