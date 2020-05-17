@@ -80,9 +80,8 @@ public class WarpMenu extends GenericMenu {
     private Button previousButton(final WarpMenu menu, final WarpSettings settings) {
         return new UpdatableButton("warp.previous", menu) {
             public void click(Player player, ClickType clickType) {
-                WarpSettings next = new WarpSettings(settings);
-                next.setPage(next.getPage() - 1);
-                update(new WarpMenu(getMenu(), player, next));
+                settings.prevPage();
+                update(new WarpMenu(getMenu(), player, settings));
             }
         }.getButton();
     }
@@ -90,9 +89,8 @@ public class WarpMenu extends GenericMenu {
     private Button nextButton(final WarpMenu menu, final WarpSettings settings) {
         return new UpdatableButton("warp.next", menu) {
             public void click(Player player, ClickType clickType) {
-                WarpSettings next = new WarpSettings(settings);
-                next.setPage(next.getPage() + 1);
-                update(new WarpMenu(getMenu(), player, next));
+                settings.nextPage();
+                update(new WarpMenu(getMenu(), player, settings));
             }
         }.getButton();
     }

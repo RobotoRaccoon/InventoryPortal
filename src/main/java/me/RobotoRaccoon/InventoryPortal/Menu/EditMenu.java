@@ -12,35 +12,34 @@ import me.RobotoRaccoon.InventoryPortal.Menu.Buttons.Edit.ItemButton;
 import me.RobotoRaccoon.InventoryPortal.Warp;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
-import org.bukkit.event.inventory.InventoryType;
 
 public class EditMenu extends GenericMenu {
 
-    private static final InventoryType TYPE = InventoryType.DISPENSER;
+    private static final int SIZE = 9;
 
-    private EditMenu menu;
-    private Warp warp;
+    private final EditMenu menu;
+    private final Warp warp;
 
     public EditMenu(Player player, Warp warp) {
         this(null, player, warp);
     }
 
     public EditMenu(GenericMenu menu, Player player, Warp warp) {
-        super(player, new LangString("menu.edit", warp.getName()), TYPE);
+        super(player, new LangString("menu.edit", warp.getName()), SIZE);
         this.warp = warp;
         this.menu = menu == null ? this : (EditMenu) menu;
     }
 
     protected void generateButtons() {
         buttons = new Button[9];
-
         buttons[0] = backButton();
 
-        buttons[3] = new DisplayNameButton(warp).getButton();
-        buttons[4] = new DescriptionButton(warp).getButton();
+        buttons[2] = new DisplayNameButton(warp).getButton();
+        buttons[3] = new DescriptionButton(warp).getButton();
 
-        buttons[6] = new ItemButton(menu, warp).getButton();
-        buttons[7] = new CategoryButton(menu, warp).getButton();
+        buttons[5] = new ItemButton(menu, warp).getButton();
+        buttons[6] = new CategoryButton(menu, warp).getButton();
+
         buttons[8] = locationButton();
     }
 

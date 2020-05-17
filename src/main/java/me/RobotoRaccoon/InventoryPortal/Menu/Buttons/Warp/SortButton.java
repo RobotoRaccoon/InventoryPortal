@@ -23,16 +23,15 @@ public class SortButton extends UpdatableButton {
     }
 
     public void click(Player player, ClickType clickType) {
-        WarpSettings next = new WarpSettings(settings);
-        WarpList.SortType sort = next.getSort();
+        WarpList.SortType sort = settings.getSort();
         if (clickType.isLeftClick()) {
             sort = sort.next();
         } else {
             sort = sort.prev();
         }
-        next.setSort(sort);
-        WarpList.sort(next.getList(), next.getSort());
+        settings.setSort(sort);
+        WarpList.sort(settings.getList(), settings.getSort());
 
-        update(new WarpMenu(getMenu(), player, next));
+        update(new WarpMenu(getMenu(), player, settings));
     }
 }

@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class WarpList {
-    private static HashMap<String, Warp> warps = new HashMap<>();
+    private static final HashMap<String, Warp> WARPS = new HashMap<>();
 
     public enum SortType {
         NAME, CATEGORY, POPULARITY;
@@ -24,33 +24,33 @@ public class WarpList {
     }
 
     public static void loadWarps() {
-        warps.clear();
+        WARPS.clear();
         ConfigurationSection config = InventoryPortal.getConfiguration().getWarp();
         for (String key : config.getKeys(false)) {
             Warp warp = new Warp(key, config.getConfigurationSection(key));
-            warps.put(key, warp);
+            WARPS.put(key, warp);
         }
     }
 
     public static Warp get(String name) {
-        return warps.get(name.toLowerCase());
+        return WARPS.get(name.toLowerCase());
     }
 
     public static boolean contains(String name) {
-        return warps.containsKey(name.toLowerCase());
+        return WARPS.containsKey(name.toLowerCase());
     }
 
     public static void add(Warp warp) {
-        warps.put(warp.getName(), warp);
+        WARPS.put(warp.getName(), warp);
     }
 
     public static void delete(Warp warp) {
-        warps.remove(warp.getName());
+        WARPS.remove(warp.getName());
         warp.delete();
     }
 
     public static List<Warp> getSortedWarps(SortType type) {
-        List<Warp> warpList = new ArrayList<>(warps.values());
+        List<Warp> warpList = new ArrayList<>(WARPS.values());
         sort(warpList, type);
         return warpList;
     }

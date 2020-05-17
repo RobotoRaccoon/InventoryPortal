@@ -3,7 +3,10 @@ version: ${project.version}
 description: ${project.description}
 author: ${author}
 main: ${project.groupId}.${project.artifactId}.${project.name}
-api-version: 1.13
+
+api-version: 1.15
+softdepend:
+  - Essentials
 
 commands:
   invportal:

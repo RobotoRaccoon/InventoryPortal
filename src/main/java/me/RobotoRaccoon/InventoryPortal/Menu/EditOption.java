@@ -4,31 +4,23 @@ import me.RobotoRaccoon.InventoryPortal.Warp;
 
 public class EditOption {
 
-    private Warp warp;
-    private Setting setting;
+    private final Warp warp;
+    private final Setting setting;
 
     public enum Setting {
         DISPLAYNAME, DESCRIPTION
     }
 
     public EditOption(Warp warp, Setting setting) {
-        setWarp(warp);
-        setSetting(setting);
+        this.warp = warp;
+        this.setting = setting;
     }
 
     public Warp getWarp() {
         return warp;
     }
 
-    public void setWarp(Warp warp) {
-        this.warp = warp;
-    }
-
     public Setting getSetting() {
         return setting;
-    }
-
-    public void setSetting(Setting setting) {
-        this.setting = setting;
     }
 }

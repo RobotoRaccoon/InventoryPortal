@@ -13,23 +13,21 @@ public class WarpSettings {
     private List<Warp> list;
 
     public WarpSettings() {
-        setPage(1);
+        this.page = 1;
         setSort(SortType.NAME);
         setList(WarpList.getSortedWarps(getSort()));
     }
 
-    public WarpSettings(WarpSettings settings) {
-        setPage(settings.getPage());
-        setSort(settings.getSort());
-        setList(settings.getList());
+    public void nextPage() {
+        page++;
+    }
+
+    public void prevPage() {
+        page--;
     }
 
     public int getPage() {
         return this.page;
-    }
-
-    public void setPage(int page) {
-        this.page = page;
     }
 
     public WarpList.SortType getSort() {
